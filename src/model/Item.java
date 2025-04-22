@@ -1,13 +1,13 @@
-public abstract class Item {
+package model;
+
+public class Item {
 
     private final String nome;
-    private final int peso;
-    private final int durabilidade;
+    private int peso;
+    private int durabilidade;
 
-    public Item(String nome, int peso, int durabilidade){
+    public Item(String nome){
         this.nome = nome;
-        this.peso = peso;
-        this.durabilidade = durabilidade;
     }
 
     public String getNome() {

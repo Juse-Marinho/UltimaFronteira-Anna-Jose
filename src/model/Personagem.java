@@ -1,3 +1,5 @@
+package model;
+
 public class Personagem {
 
     private String nome;
@@ -10,19 +12,18 @@ public class Personagem {
     private int xPos = 0;
     private int yPos = 0;
 
+    public Personagem(){
+        this.inventario = new Inventario();
+    }
 
     public void andar(String direcao){
 
-        if(direcao.equals("n")){
-            this.yPos++;
-        } else if(direcao.equals("s")){
-            this.yPos--;
-        } else if(direcao.equals("l")){
-            this.xPos++;
-        } else if(direcao.equals("o")){
-            this.xPos--;
-        } else{
-            System.out.println("direção inválida");
+        switch (direcao) {
+            case "n" -> this.yPos++;
+            case "s" -> this.yPos--;
+            case "l" -> this.xPos++;
+            case "o" -> this.xPos--;
+            default -> System.out.println("direção inválida");
         }
 
         if (xPos < 1){
@@ -41,6 +42,16 @@ public class Personagem {
 
     }
 
+    public void verInventario(){
+        System.out.println("=-=-=-= INVENTÁRIO =-=-=-=\n");
+        inventario.listarItens();
+        System.out.println("Espaço: " + inventario.getEspacoAtual());
+        System.out.println("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+    }
+
+    public void adicionarItem(Item item){
+        inventario.adicionarItem(item);
+    }
 
     public String getNome() {
         return nome;
